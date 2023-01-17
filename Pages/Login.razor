@@ -1,0 +1,68 @@
+﻿@page "/login"
+@using Models
+@layout EmptyLayout
+@inject HttpClient client
+@inject NavigationManager UriHelper
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 col-12 mx-auto">
+            <div class="row my-5">
+                <div class="col-md-6 col-12 mx-auto">
+                    <div class="card" style="border-color:  #ccd1d1 ">
+                        <h2 class="card-header"><b>LOGIN</b></h2>
+                        <br />
+                        <div class="card-body">
+                            <EditForm Model="login" OnValidSubmit="validSubmitRequest">
+                                <div class="form-group input-group-lg">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <label><b>Email: </b></label>
+                                    <InputText @bind-Value="login.Email" type="email" class="form-control" />
+                                </div>
+                                <br />
+                                <div class="from-group input-group-lg">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                    <label><b>Password: </b></label>
+                                    <InputText @bind-Value="login.Password" type="password" class="form-control" />
+                                </div>
+                                <br />
+                                <br />
+                                <button class="btn btn-primary btn-block px-4 py-2">
+                                    <b>
+                                        <i style="margin:0px 10px 0px 0px;" class="fa fa-sign-in" aria-hidden="true"></i>
+                                        Login
+                                    </b>
+                                </button>
+                                <br />
+                                <span> @Loading </span>
+                            </EditForm>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    Models.Login login = new Models.Login();
+    string Loading;
+    async void validSubmitRequest()
+    {
+        //CÓDIGO PARA EL POST Y SI LA RESPUESTA ES VÁLIDA REDIRECCIONAR
+        //var postBody = new { email = login.Email, password = login.Password};
+        //using var response = await client.PostAsJsonAsync("https://localhost:8080/api/auth/login", postBody);
+
+        //if (response.IsSuccessStatusCode)
+        //{
+        //    User userResponse = await response.Content.ReadFromJsonAsync<User>();
+        //    UriHelper.NavigateTo("userList");
+        //}
+
+        UriHelper.NavigateTo("userList");
+    }
+
+}
+
+
