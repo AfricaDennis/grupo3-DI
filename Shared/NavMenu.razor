@@ -1,29 +1,35 @@
-﻿<div class="d-flex nav-container">
+﻿<div class="d-flex nav-container" style="width: 100%;">
     <div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Private Lessons</a>
-        <button title="Navigation menu" class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">Private Lessons</a>
+            <button title="Navigation menu" class="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-end top-row ps-3" style="width: inherit;">
+        <nav class="d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+                <div class="nav-element">
+                    <NavLink href="userList" style="color: white">
+                        Mostrar Usuarios
+                    </NavLink>
+                </div>
+                <div class="nav-element">
+                    <NavLink href="register" style="color: white">
+                       Añadir Usuario
+                    </NavLink>
+                </div>
+            </div>
+            <div class="nav-element">
+                <NavLink class="logout" style="color: white">
+                    <span class="oi oi-account-logout" aria-hidden="true"></span> Logout
+                </NavLink>
+            </div>
+        </nav>
     </div>
 </div>
 
-<div class="top-row ps-3 ">
-        <nav class="d-flex justify-content-lg-start">
-        <div class="nav-element px-3">
-            <NavLink href="userList">
-                <span class="nav-text" aria-hidden="true"></span> Mostrar Usuarios
-            </NavLink>
-        </div>
-        <div class="nav-element px-3">
-            <NavLink href="register">
-                <span class="nav-text" aria-hidden="true"></span> Añadir Usuario
-            </NavLink>
-        </div>
-    </nav>
-</div>
-</div>
-
 @code {
-
 }

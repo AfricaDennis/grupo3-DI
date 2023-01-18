@@ -1,5 +1,4 @@
-﻿@page "/register"
-@using System.ComponentModel.DataAnnotations
+﻿@page "/edit"
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-7 col-12 mx-auto">
@@ -11,7 +10,7 @@
                             <EditForm Model="user">
                                 <DataAnnotationsValidator />
                                 <fieldset class="border p-2">
-                                    <legend class="float-none w-auto p-2" >DATOS DEL USUARIO</legend>
+                                    <legend class="float-none w-auto p-2">DATOS DEL USUARIO</legend>
                                     <div class="form-group">
                                         <label><b>Nombre: </b></label>
                                         <InputText type="text" @bind-Value="user.name" class="form-control" />
@@ -49,31 +48,7 @@
                                     </div>
                                 </fieldset>
                                 <br />
-                                <fieldset class="border p-2">
-                                    <legend class="float-none w-auto p-2">ROL</legend>
-                                    <div class="form-group checkBox">
-                                        <label>
-                                            Profesor:
-                                            <InputCheckbox @bind-Value="user.teacher" />
-                                        </label>
-                                        <br />
-                                        <br />
-                                        <label>
-                                            Alumno:
-                                            <InputCheckbox @bind-Value="user.student" />
-                                        </label>
-                                        <br />
-                                        <br />
-                                        <label>
-                                            Admin:
-                                            <InputCheckbox @bind-Value="user.admin" />
-                                        </label>
-                                    </div>
-                                </fieldset>
-                                <br />
-                                <br />
-                                <br />
-                                <button class="btn btn-primary"> Registrarse</button>
+                                <button class="btn btn-primary"> Editar </button>
                                 <NavLink href="/login" class="btn btn-link">Cancelar</NavLink>
                             </EditForm>
                         </div>
@@ -83,6 +58,7 @@
         </div>
     </div>
 </div>
+
 @code {
     Models.User user = new Models.User();
 }

@@ -65,6 +65,7 @@ a, .btn-link {
 
 /************NAVEGACIÓN***************/
 
+
 .nav-container {
     margin-left: -2em;
     background-color: #333;
@@ -87,9 +88,12 @@ a, .btn-link {
     color: white;
 }
 
+.nav-end {
+    width: 100%;
+}
+
 
 /************USERTABLE***************/
-
 .table-icon {
     width: 45px;
     height: 45px;
@@ -163,9 +167,3 @@ tr:hover td {
     color: White;
 }
 
-/*****************FORM**********************/
-.checkBox {
-    border-radius: 2em;
-    border: 2px solid #D5DBDB;
-    padding: 12px 12px 16px 12px;
-}

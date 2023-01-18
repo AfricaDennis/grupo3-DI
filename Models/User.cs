@@ -15,6 +15,7 @@ namespace grupo3.Models
         [Compare("password", ErrorMessage = "Las contraseñas deben coincidir")]
         public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "Email requerido.")]
+        [EmailAddress]
         public string email { get; set; }
         [Required(ErrorMessage = "Telefono requerido.")]
         public string phone { get; set; }

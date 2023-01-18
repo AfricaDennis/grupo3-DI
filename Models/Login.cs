@@ -4,10 +4,11 @@ namespace grupo3.Models
 {
     public class Login
     {
-        [Required]
+        [Required(ErrorMessage = "Email requerido.")]
+        [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Contraseña requerida.")]
         public string Password { get; set; }
     }
 }

@@ -11,10 +11,11 @@ namespace grupo3.Models
         public string password { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
-        public object student { get; set; }
-        public object teacher { get; set; }
+        public bool student { get; set; }
+        public bool teacher { get; set; }
         public bool admin { get; set; }
 
+        public UserResponse() { }
         public UserResponse(int id, string name, string surname, string password, string email, string phone, bool student, bool teacher, bool admin)
         {
             this.id = id;

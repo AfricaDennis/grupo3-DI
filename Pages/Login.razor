@@ -9,32 +9,36 @@
         <div class="col-md-7 col-12 mx-auto">
             <div class="row my-5">
                 <div class="col-md-6 col-12 mx-auto">
-                    <div class="card" style="border-color:  #ccd1d1 ">
-                        <h2 class="card-header"><b>LOGIN</b></h2>
+                    <div class="card">
+                        <h2 class="card-header" style="border-radius: 12px 12px 0 0"><b>LOGIN</b></h2>
                         <br />
                         <div class="card-body">
                             <EditForm Model="login" OnValidSubmit="validSubmitRequest">
+                                <DataAnnotationsValidator />
                                 <div class="form-group input-group-lg">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     <label><b>Email: </b></label>
                                     <InputText @bind-Value="login.Email" type="email" class="form-control" />
+                                    <ValidationMessage For="@(() => login.Email)" />
                                 </div>
                                 <br />
                                 <div class="from-group input-group-lg">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                     <label><b>Password: </b></label>
                                     <InputText @bind-Value="login.Password" type="password" class="form-control" />
+                                    <ValidationMessage For="@(() => login.Password)" />
                                 </div>
                                 <br />
                                 <br />
-                                <button class="btn btn-primary btn-block px-4 py-2">
-                                    <b>
-                                        <i style="margin:0px 10px 0px 0px;" class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Login
-                                    </b>
-                                </button>
+                                <div class="from-group input-group-lg" style="align-content: center">
+                                    <button class="btn btn-primary btn-block px-4 py-2">
+                                        <b>
+                                            <i style="margin:0px 10px 0px 0px;" class="fa fa-sign-in" aria-hidden="true"></i>
+                                            Login
+                                        </b>
+                                    </button>
+                                </div>
                                 <br />
-                                <span> @Loading </span>
                             </EditForm>
                             <br />
                         </div>

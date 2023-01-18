@@ -2,61 +2,8 @@
 @using System.Net.Http.Headers;
 @using grupo3.Models;
 @inject HttpClient client
+@inject IJSRuntime JsRuntime
 
-
-@*<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-7 col-12 mx-auto">
-            <table class="table table-striped table-hover">
-                <thead class="table-thead">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Admin</th>
-                        <th>Rol</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < NumberOfRows; i++)
-                    {
-                        @foreach (UserResponse user in users.Skip(i*5).Take(5))
-                        {
-                            <tr>
-                                <td>@user.name</td>
-                                <td>@user.surname</td>
-                                <td>@user.email</td>
-                                <td>@user.phone</td>
-                                <td>@user.admin</td>
-                                @{
-                                    rol = user.teacher ? "Profesor" : "Alumno";
-                                }
-                                <td>@rol</td>
-                                <td><img class="table-icon" src="images/pen.png" /></td>
-                                <td><img class="table-icon" src="images/remove.png" /></td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>*@
-@for (int x = 0, y = 0; x < usuarios.Length; x++)
-{
-    int num = 0;
-    @foreach (Usuarios usuario in usuarios.Skip(x * 5).Take(5))
-    {
-        num++;
-    }
-    @if (num > 0)
-    {
-        y++;
-    }
-
-    calcularpaginas(y);
-}
 
 <div class="container-fluid">
     <div class="row">
@@ -70,90 +17,78 @@
                         <th>Teléfono</th>
                         <th>Admin</th>
                         <th>Rol</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = 0; i <= numeropag; i++)
+                    @foreach (UserResponse user in users)
                     {
-                        @foreach (Usuarios usuario in usuarios.Skip(i * 5).Take(5))
-                        {
-                            <tr>
-                                <td>@usuarios[pagina].name</td>
-                                <td>@usuarios[pagina].surname</td>
-                                <td>@usuarios[pagina].email</td>
-                                <td>@usuarios[pagina].phone</td>
-                                <td>@usuarios[pagina].admin</td>
-                                @{
-                                    rol = usuarios[pagina].teacher ? "Profesor" : "Alumno";
-                                }
-                                <td>@rol</td>
-                            </tr>
-                        }
+                        <tr>
+                            <td>@user.name</td>
+                            <td>@user.surname</td>
+                            <td>@user.email</td>
+                            <td>@user.phone</td>
+                            <td>@user.admin</td>
+                            @{
+                                rol = user.teacher ? "Profesor" : "Alumno";
+                            }
+                            <td>@rol</td>
+                            <td><img class="table-icon" src="images/pen.png" /></td>
+                            <td><img @onclick="Delete_Click" class="table-icon" src="images/remove.png" /></td>
+                        </tr>
                     }
+                    
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-@for (int x = 1; x <= numeropag; x++)
-{
-    <a @onclick="@(() => cambioDePagina(x))">@x</a>
-}
-
-    
-
-@*<Confirm @ref="DeleteConfirmation"
-    />*@
-
 @code {
-    private Usuarios[]? usuarios;
-    int pagina = 0;
-    int numeropag = 0;
-    private List<UserResponse> users { get; set; }
-    private string rol { get; set; }
-    [Parameter]
-    public int NumberOfRows { get; set; } = 5
-    ;
+
+    private List<UserResponse>? users { get; set; }
+    private string? rol { get; set; }
+
+    protected async void Delete_Click(){
+        
+    }
+
+
     protected override async Task OnInitializedAsync()
     {
-        usuarios = await client.GetFromJsonAsync<Usuarios[]>("sample-data/usuarios.json");
+        //client.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
+        //Console.WriteLine(client.DefaultRequestHeaders.ToString());
+        //users = await client.GetFromJsonAsync<List<UserResponse>>("http://localhost:8080/api/users");
+        //Console.WriteLine(response.name + " //// " + client.DefaultRequestHeaders.ToString());
+
+        UserResponse user1 = new UserResponse(1, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user2 = new UserResponse(2, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user3 = new UserResponse(3, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user4 = new UserResponse(4, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user5 = new UserResponse(5, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user6 = new UserResponse(6, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user7 = new UserResponse(7, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user8 = new UserResponse(8, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user9 = new UserResponse(9, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user10 = new UserResponse(10, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user11 = new UserResponse(11, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user12 = new UserResponse(12, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user13 = new UserResponse(13, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user14 = new UserResponse(14, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user15 = new UserResponse(15, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user16 = new UserResponse(16, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user17 = new UserResponse(17, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", false, true, false);
+        UserResponse user18 = new UserResponse(18, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user19 = new UserResponse(19, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user20 = new UserResponse(20, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user21 = new UserResponse(21, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+        UserResponse user22 = new UserResponse(22, "Ander", "Bustillo Pedron", "hola", "ander@gmail.com", "659585402", true, false, false);
+
+        users = new List<UserResponse> { user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15,
+    user16, user17, user18, user19, user20, user21, user22};
     }
 
-    public class Usuarios
-    {
-        public string? name { get; set; }
-        public string? surname { get; set; }
-        public string? email { get; set; }
-        public string? phone { get; set; }
-        public bool teacher { get; set; }
-        public bool admin { get; set; }
-    }
 
-
-    protected ConfirmBase DeleteConfirmation { get; set; }
-
-    protected void Delete_Click()
-    {
-        DeleteConfirmation.Show();
-    }
-
-    protected async Task ConfirmDelete_Click(bool deleteConfirmed)
-    {
-        if (deleteConfirmed)
-        {
-            Console.WriteLine("Borrado con exito");
-        }
-    }
-
-    public void calcularpaginas(int hojas)
-    {
-        numeropag = hojas;
-    }
-
-    public void cambioDePagina(int cambio)
-    {
-        pagina = cambio;
-    }
 
 }
