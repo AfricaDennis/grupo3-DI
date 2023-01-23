@@ -6,9 +6,9 @@ namespace grupo3.Models
     {
         [Required(ErrorMessage = "Email requerido.")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [Required(ErrorMessage = "Contraseña requerida.")]
-        public string Password { get; set; }
+        public string password { get; set; }
     }
 }

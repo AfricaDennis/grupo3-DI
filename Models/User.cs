@@ -18,6 +18,7 @@ namespace grupo3.Models
         [EmailAddress]
         public string email { get; set; }
         [Required(ErrorMessage = "Telefono requerido.")]
+        [Phone]
         public string phone { get; set; }
         public bool student { get; set; }
         public bool teacher { get; set; }

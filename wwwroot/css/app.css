@@ -93,7 +93,7 @@ a, .btn-link {
 }
 
 
-/************USERTABLE***************/
+/************USER-TABLE***************/
 .table-icon {
     width: 45px;
     height: 45px;
@@ -149,8 +149,19 @@ tr:hover td {
     color: #339;
 }
 
-/*****************LOGIN**********************/
+.markedPage {
+    border-bottom: 1px solid red;
+    text-align: center;
+}
+li:hover {
+    cursor: pointer;
+}
 
+.paginate-numbers {
+    margin: 0 1em;
+}
+
+/*****************LOGIN**********************/
 .card {
     border-radius: .9em;
     box-shadow: 0px 0px 15px black;
@@ -166,4 +177,5 @@ tr:hover td {
     font-size: 3em;
     color: White;
 }
+
 
