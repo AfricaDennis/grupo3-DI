@@ -78,7 +78,7 @@
     private string? rol { get; set; }
 
 
-    int numero_elementos { get; set; } = 5;
+    int numero_elementos { get; set; } = 10;
     int total_paginas { get; set; }
     int pagina_actual { get; set; } = 1;
     int primer_elemento { get; set; }
@@ -156,6 +156,7 @@
         Console.WriteLine(clickedPage);
         pagina_actual = clickedPage;
         StateHasChanged();
+        actualizarLista();
     }
 
     public void actualizarLista()

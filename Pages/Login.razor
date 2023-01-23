@@ -80,11 +80,11 @@
             //Si sale mal
             if (((int)response.StatusCode) == 401)
             {
-                await JsRuntime.InvokeVoidAsync("alert", "401 Unauthorized");
+                await JsRuntime.InvokeVoidAsync("alert", "401 Unauthorized: la petición no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado.");
             }
             else
             {
-                await JsRuntime.InvokeVoidAsync("alert", "Warning!");
+                await JsRuntime.InvokeVoidAsync("alert", "Algo ha salido mal.");
             }
 
         }
