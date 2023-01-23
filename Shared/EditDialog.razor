@@ -31,6 +31,24 @@
         <InputText type="password" @bind-Value="user.ConfirmPassword" class="form-control" />
     </div>
     <br />
+    <div class="form-group checkBox">
+        <label>
+            Profesor:
+            <InputRadio @bind-Value="user.teacher" />
+        </label>
+        <br />
+        <br />
+        <label>
+            Alumno:
+            <InputRadio @bind-Value="user.student" />
+        </label>
+        <br />
+        <br />
+        <label>
+            Admin:
+            <InputRadio @bind-Value="user.admin" />
+        </label>
+    </div>
     <br />
     <button class="btn btn-success"> Editar</button>
     <button class="btn" @onclick="Close">Cancelar</button>
