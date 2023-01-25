@@ -31,33 +31,25 @@
         <InputText type="password" @bind-Value="user.ConfirmPassword" class="form-control" />
     </div>
     <br />
-    <div class="form-group checkBox">
-        <label>
-            Profesor:
-            <InputRadio @bind-Value="user.teacher" />
-        </label>
-        <br />
-        <br />
-        <label>
-            Alumno:
-            <InputRadio @bind-Value="user.student" />
-        </label>
-        <br />
-        <br />
-        <label>
-            Admin:
-            <InputRadio @bind-Value="user.admin" />
-        </label>
+    <div class="form-group">
+        <InputSelect @bind-Value=@user>
+            <option value="@user.teacher">Profesor</option>
+            <option value="@user.student">Alumno</option>
+            <option value="@user.admin">Admin</option>
+        </InputSelect>
     </div>
     <br />
-    <button class="btn btn-success"> Editar</button>
+    <button class="btn btn-success" @onclick="@(() => EditUser(user.id))"> Editar</button>
     <button class="btn" @onclick="Close">Cancelar</button>
 </EditForm>
 
 @code {
 
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
-    User user = new User();
-
+    [Parameter] public UserResponse user { get; set; }
     private async Task Close() => await BlazoredModal.CloseAsync();
+
+    private async Task EditUser(int id){
+
+    }
 }

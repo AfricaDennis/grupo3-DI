@@ -1,5 +1,7 @@
 ﻿@page "/register"
 @using System.ComponentModel.DataAnnotations
+@inject IJSRuntime JSRuntime
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-7 col-12 mx-auto">
@@ -51,23 +53,12 @@
                                 <br />
                                 <fieldset class="border p-2">
                                     <legend class="float-none w-auto p-2">ROL</legend>
-                                    <div class="form-group checkBox">
-                                        <label>
-                                            Profesor:
-                                            <InputRadio @bind-Value="user.teacher" />
-                                        </label>
-                                        <br />
-                                        <br />
-                                        <label>
-                                            Alumno:
-                                            <InputRadio @bind-Value="user.student" />
-                                        </label>
-                                        <br />
-                                        <br />
-                                        <label>
-                                            Admin:
-                                            <InputRadio @bind-Value="user.admin" />
-                                        </label>
+                                    <div class="form-group">
+                                        <InputSelect @bind-Value=@user>
+                                            <option value="@user.teacher">Profesor</option>
+                                            <option value="@user.student">Alumno</option>
+                                            <option value="@user.admin">Admin</option>
+                                        </InputSelect>
                                     </div>
                                 </fieldset>
                                 <br />
@@ -84,5 +75,5 @@
     </div>
 </div>
 @code {
-    Models.User user = new Models.User();
+    Models.UserResponse user = new Models.UserResponse();
 }

@@ -1,21 +1,24 @@
 ﻿@using Blazored.Modal
+@using grupo3.Models
+@inject HttpClient client
 
-<h4>¿Estás segura/o de que quieres eliminar a {nombre}?</h4>
+<h4>¿Estás segura/o de que quieres eliminar a @user.surname, @user.name?</h4>
 <br />
-<button class="btn btn-danger" @onclick="@(() => DeleteUser(id))">Borrar</button>
+<button class="btn btn-danger" @onclick="@(() => DeleteUser(user.id))">Borrar</button>
 <button class="btn" @onclick="Close" >Cancelar</button>
 
 @code {
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
 
     //Parámetro del modal
-    int id = 1;
+    [Parameter] public UserResponse user { get; set; }
 
     private async Task Close() => await BlazoredModal.CloseAsync();
 
     private async Task DeleteUser(int id)
     {
-        //Petición
+        await client.DeleteAsync("http://localhost:8080/api/users/" + Convert.ToInt32(id));
+        StateHasChanged();
     } 
 }
 

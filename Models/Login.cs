@@ -5,7 +5,7 @@ namespace grupo3.Models
     public class Login
     {
         [Required(ErrorMessage = "Email requerido.")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "No es una dirección de correo electrónico válida.")]
         public string email { get; set; }
 
         [Required(ErrorMessage = "Contraseña requerida.")]

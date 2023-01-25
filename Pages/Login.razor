@@ -64,7 +64,7 @@
         var response = await client.PostAsJsonAsync("http://localhost:8080/api/auth/login", login);
         if (response.IsSuccessStatusCode)
         {
-            User user = JsonSerializer.Deserialize<User>(response.Content.ReadAsStringAsync().Result);
+            UserResponse user = JsonSerializer.Deserialize<UserResponse>(response.Content.ReadAsStringAsync().Result);
 
             if(user.id != null && user.admin == true){
                 UriHelper.NavigateTo($"/userList/{user.id}");

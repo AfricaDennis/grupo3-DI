@@ -6,27 +6,24 @@ namespace grupo3.Models
     public class UserResponse
     {
         public int id { get; set; }
+        [Required(ErrorMessage = "Nombre requerido.")]
         public string name { get; set; }
+        [Required(ErrorMessage = "Apellidos requerido.")]
         public string surname { get; set; }
+        [Required(ErrorMessage = "Contraseña requerida.")]
         public string password { get; set; }
+        [Required(ErrorMessage = "Confirmación requerida.")]
+        [Compare("password", ErrorMessage = "Las contraseñas deben coincidir")]
+        public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "Email requerido.")]
+        [EmailAddress(ErrorMessage = "No es una dirección de correo electrónico válida.")]
         public string email { get; set; }
+        [Required(ErrorMessage = "Telefono requerido.")]
+        [Phone]
         public string phone { get; set; }
         public bool student { get; set; }
         public bool teacher { get; set; }
         public bool admin { get; set; }
 
-        public UserResponse() { }
-        public UserResponse(int id, string name, string surname, string password, string email, string phone, bool student, bool teacher, bool admin)
-        {
-            this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.password = password;
-            this.email = email;
-            this.phone = phone;
-            this.student = student;
-            this.teacher = teacher;
-            this.admin = admin;
-        }
     }
 }
